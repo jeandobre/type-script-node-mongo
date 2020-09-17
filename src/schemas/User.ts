@@ -1,4 +1,10 @@
-import { Schema, model } from 'mongoose';
+import { Schema, model, Document } from 'mongoose';
+
+interface UserDocument extends Document {
+	email?: string,
+	firstName?: string,
+	lastName?: string
+}
 
 const UserSchema = new Schema({
   email: String,
@@ -8,4 +14,4 @@ const UserSchema = new Schema({
   timestamp: true,
 });
 
-export default model('User', UserSchema);
+export default model<UserDocument>('User', UserSchema);
